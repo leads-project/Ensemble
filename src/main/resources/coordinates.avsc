@@ -1,0 +1,11 @@
+{
+    "type": "record",
+    "name": "Coordinates","default":null,
+    "namespace": "org.infinispan.ensemble.cache.distributed.partitioning",
+    "fields" : [
+      {"name": "key", "type": ["null","string"],"default":null},
+      {"name": "cache", "type": ["null","string"],"default":null},
+      {"name": "longitude", "type": "double","default":0},
+      {"name": "latitude", "type": "double","default":0}
+    ]
+  }
