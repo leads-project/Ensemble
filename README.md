@@ -5,7 +5,7 @@ each running at distinct geographically distributed locations, and orchestrates 
 the illusion of a single store spanning all the deployments. 
 The end-user of Ensemble decides what replication and consistency guarantees the federated storage should provide.
 
-**Design**
+## Design
 
 Ensemble exposes a Java interface that consists of two key components: an EnsembleCache and an EnsembleCacheManager. An EnsembleCache is a named and typed instance of the key-value store that spans several Infinispan deployments. An EnsembleCacheManager is a container of EnsembleCaches. Both abstractions are directly inherited from the Infinispan API (respectively a Cache and a CacheContainer).
 
@@ -13,11 +13,11 @@ An EnsembleCache contains multiple RemoteCaches; each RemoteCache represents an 
 
 Ensemble supports an eventing mechanisms atop HotRod, that is a full listener API in geo-distributed client-server mode. When a client application wants to listen to cache events, it simply registers to the appropriate Ensemble cache. In the case where the cache is distributed across multiple micro-clouds, a registration per micro-cloud is done by Ensemble, and duplicates are removed automatically at the client-side library (this last filtering is transparent to the application).
 
-**Installation**
+## Installation
 
 Being a client-side library, Ensemble requires no specific installation. The necesary steps to install Infinispan are described in the [user guide](http://infinispan.org/docs/8.0.x/user_guide/user_guide.html). 
 
-**Code Snippet**
+## Code Snippet
 
 To understand finely how Ensemble works, you can have a look in the [test](https://github.com/leads-project/Ensemble/tree/master/src/test/java/org/infinispan/ensemble/test) directory of this project. All the clusters are emulated on your local machine, and these tests do not require a distributed to Infinispan.
 
