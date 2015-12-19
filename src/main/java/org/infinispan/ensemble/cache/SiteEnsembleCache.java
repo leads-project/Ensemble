@@ -2,7 +2,6 @@ package org.infinispan.ensemble.cache;
 
 import org.infinispan.client.hotrod.*;
 import org.infinispan.client.hotrod.impl.RemoteCacheImpl;
-import org.infinispan.commons.util.CloseableIterator;
 import org.infinispan.commons.util.concurrent.NotifyingFuture;
 import org.infinispan.ensemble.Site;
 
@@ -174,12 +173,6 @@ public class SiteEnsembleCache<K,V> extends EnsembleCache<K,V> implements Remote
     }
 
     @Override
-    public boolean replaceWithVersion(K k, V v, long l, long l1, TimeUnit timeUnit, long l2,
-          TimeUnit timeUnit1) {
-        return delegate.replaceWithVersion(k, v, l, l1, timeUnit, l2, timeUnit1);
-    }
-
-    @Override
     public NotifyingFuture<Boolean> replaceWithVersionAsync(K key, V newValue, long version) {
         return delegate.replaceWithVersionAsync(key, newValue, version);
     }
@@ -192,16 +185,6 @@ public class SiteEnsembleCache<K,V> extends EnsembleCache<K,V> implements Remote
     @Override
     public NotifyingFuture<Boolean> replaceWithVersionAsync(K key, V newValue, long version, int lifespanSeconds, int maxIdleSeconds) {
         return delegate.replaceWithVersionAsync(key, newValue, version, lifespanSeconds, maxIdleSeconds);
-    }
-
-    @Override
-    public CloseableIterator<Entry<Object, Object>> retrieveEntries(String s, Set<Integer> set, int i) {
-        return delegate.retrieveEntries(s,i);
-    }
-
-    @Override
-    public CloseableIterator<Entry<Object, Object>> retrieveEntries(String s, int i) {
-        return delegate.retrieveEntries(s,i);
     }
 
     @Override
@@ -282,11 +265,6 @@ public class SiteEnsembleCache<K,V> extends EnsembleCache<K,V> implements Remote
     @Override
     public <T> T execute(String s, Map<String, ?> map) {
         return delegate.execute(s,map);
-    }
-
-    @Override
-    public CacheTopologyInfo getCacheTopologyInfo() {
-        return delegate.getCacheTopologyInfo();
     }
 
     @Override

@@ -35,9 +35,7 @@ public class SimulationDriver extends MultipleCacheManagersTest implements Drive
    private List<HotRodServer> servers = new ArrayList<>();
    private List<String> sites = new ArrayList<>();
 
-   public SimulationDriver() {
-      testClassStarted();
-   }
+   public SimulationDriver() {}
 
    @Override
    public int getNumberOfSites(){

@@ -15,13 +15,18 @@ An EnsembleCache contains multiple RemoteCaches; each RemoteCache represents an 
 
 Ensemble supports an eventing mechanisms atop HotRod, that is a full listener API in geo-distributed client-server mode. When a client application wants to listen to cache events, it simply registers to the appropriate Ensemble cache. In the case where the cache is distributed across multiple micro-clouds, a registration per micro-cloud is done by Ensemble, and duplicates are removed automatically at the client-side library (this last filtering is transparent to the application).
 
-## Installation
+## Installation & Usage
 
-Being a client-side library, Ensemble requires no specific installation. The necesary steps to install Infinispan are described in the [user guide](http://infinispan.org/docs/8.0.x/user_guide/user_guide.html). 
+To use the query capability of Ensemble, you will need to install locally the Apache Avro support for Infinispan.
+This support is available [here](https://github.com/leads-project/infinispan-avro).
+Outside of this requirement, Ensemble does not require any specific settings for being use, outside of Infinispan itself. 
+A detailed step-by-step explanation of how to deploy Infinispan is available online in the [user guide](http://infinispan.org/docs/8.0.x/user_guide/user_guide.html). 
 
 ## Code Snippet
 
-To understand finely how Ensemble works, you can have a look in the [test](https://github.com/leads-project/Ensemble/tree/master/src/test/java/org/infinispan/ensemble/test) directory of this project. All the clusters are emulated on your local machine, and these tests do not require an access to multiple Infinispan deployments.
+To understand how Ensemble works, we suggest to read carefully the [tests](https://github.com/leads-project/Ensemble/tree/master/src/test/java/org/infinispan/ensemble/test).
+Notice that all the clusters are emulated on your local machine, 
+such tests do not require an access to one or more Infinispan deployments.
 
 ```java
 

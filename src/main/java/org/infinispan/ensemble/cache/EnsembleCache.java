@@ -1,7 +1,6 @@
 package org.infinispan.ensemble.cache;
 
 import org.infinispan.client.hotrod.*;
-import org.infinispan.commons.util.CloseableIterator;
 import org.infinispan.commons.util.concurrent.NotifyingFuture;
 import org.infinispan.ensemble.Site;
 import org.infinispan.util.logging.Log;
@@ -298,12 +297,6 @@ public abstract class EnsembleCache<K,V> implements RemoteCache<K,V>{
    }
 
    @Override
-   public boolean replaceWithVersion(K k, V v, long l, long l1, TimeUnit timeUnit, long l2,
-         TimeUnit timeUnit1) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
    public NotifyingFuture<Boolean> replaceWithVersionAsync(K key, V newValue, long version) {
       throw new UnsupportedOperationException();
    }
@@ -317,16 +310,6 @@ public abstract class EnsembleCache<K,V> implements RemoteCache<K,V>{
    @Override
    public NotifyingFuture<Boolean> replaceWithVersionAsync(K key, V newValue, long version,
          int lifespanSeconds, int maxIdleSeconds) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public CloseableIterator<Entry<Object, Object>> retrieveEntries(String s, Set<Integer> set, int i) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public CloseableIterator<Entry<Object, Object>> retrieveEntries(String s, int i) {
       throw new UnsupportedOperationException();
    }
 
@@ -406,11 +389,6 @@ public abstract class EnsembleCache<K,V> implements RemoteCache<K,V>{
 
    @Override
    public <T> T execute(String s, Map<String, ?> map) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public CacheTopologyInfo getCacheTopologyInfo() {
       throw new UnsupportedOperationException();
    }
 
