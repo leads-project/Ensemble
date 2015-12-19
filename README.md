@@ -24,28 +24,38 @@ Being a client-side library, Ensemble requires no specific installation. The nec
 To understand finely how Ensemble works, you can have a look in the [test](https://github.com/leads-project/Ensemble/tree/master/src/test/java/org/infinispan/ensemble/test) directory of this project. All the clusters are emulated on your local machine, and these tests do not require a distributed to Infinispan.
 
 ```java
+
       WebPage page1 = somePage();
       WebPage page2 = somePage();
 
-      // get, put
+      // get
       cache().put(page1.getKey(),page1);
-      assert frontierMode || cache().containsKey(page1.getKey());
-      assert frontierMode || cache().get(page1.getKey()).equals(page1);
+      assert cache().containsKey(page1.getKey());
+      assert cache().get(page1.getKey()).equals(page1);
 
       // putIfAbsent
-      for(int i=0; i<1000; i++){
-         page2 = somePage();
-         cache().putIfAbsent(page1.getKey(), page2);
-      }
-      assert frontierMode || cache().get(page1.getKey()).equals(page1);
+      assert cache().putIfAbsent(page2.getKey(),page2)==null;
+      cache().putIfAbsent(page1.getKey(),page2);
+      assert cache().get(page2.getKey()).equals(page2);
 
-      // Frontier mode check
-      WebPage page3= somePage();
-      cache().put(page3.getKey(), page3);
-      EnsembleCache<CharSequence, WebPage> location 
-                            = partitioner.locate(page3.getKey());
-      if (!frontierMode || location.equals(cache.getFrontierCache()))
-         assert cache.containsKey(page3.getKey());
-      else
-         assert !cache.containsKey(page3.getKey());
+      // quering 
+      QueryFactory qf = Search.getQueryFactory(cache());
+
+      WebPage page1 = somePage();
+      cache().put(page1.getKey(),page1);
+      WebPage page2 = somePage();
+      cache().put(page2.getKey(),page2);
+
+      QueryBuilder qb = (QueryBuilder) qf.from(WebPage.class);
+      Query query = qb.build();
+      List list = query.list();
+      assertEquals(list.size(),2);
+
+      qb = (QueryBuilder) qf.from(WebPage.class);
+      qb.having("key").eq(page1.getKey());
+      query = qb.build();
+      assertEquals(query.list().get(0), page1);
+
+```
+
 
