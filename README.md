@@ -21,7 +21,7 @@ Being a client-side library, Ensemble requires no specific installation. The nec
 
 ## Code Snippet
 
-To understand finely how Ensemble works, you can have a look in the [test](https://github.com/leads-project/Ensemble/tree/master/src/test/java/org/infinispan/ensemble/test) directory of this project. All the clusters are emulated on your local machine, and these tests do not require a distributed to Infinispan.
+To understand finely how Ensemble works, you can have a look in the [test](https://github.com/leads-project/Ensemble/tree/master/src/test/java/org/infinispan/ensemble/test) directory of this project. All the clusters are emulated on your local machine, and these tests do not require an access to multiple Infinispan deployments.
 
 ```java
 
