@@ -1,4 +1,4 @@
-# Ensemble: a client-side geo-distributed Infinispan federation
+# Ensemble: a federated geo-distributed key-value store 
 
 Ensemble is a key-value store that sits on top of [Infinispan](http://infinispan.org), 
 an open-source data grid platform (key value store, distributed and transactional). 
