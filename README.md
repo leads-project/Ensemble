@@ -22,6 +22,20 @@ This support is available [here](https://github.com/leads-project/infinispan-avr
 Outside of this requirement, Ensemble does not require any specific settings for being use, outside of Infinispan itself. 
 A detailed step-by-step explanation of how to deploy Infinispan is available online in the [user guide](http://infinispan.org/docs/8.0.x/user_guide/user_guide.html). 
 
+Below, we explain how to execute an installation.
+
+```
+# Building and installing infinispan-avro
+git clone https://github.com/leads-project/infinispan-avro.git
+cd infinispan-avro
+mvn clean install -DskipTests
+
+# Building and installing ensemble
+git clone https://github.com/leads-project/Ensemble.git
+cd Ensemble
+mvn clean install -DskipTests
+```
+
 ## Code Snippet
 
 To understand how Ensemble works, we suggest to read carefully the [tests](https://github.com/leads-project/Ensemble/tree/master/src/test/java/org/infinispan/ensemble/test).
